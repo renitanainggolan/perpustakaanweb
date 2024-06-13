@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 300px;
+            margin: auto;
+        }
+        input, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        .message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .incomplete {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            
+            <button type="button" onclick="login()">Login</button>
+        </form>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        const validUsername = "user";
+        const validPassword = "password";
+
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const messageDiv = document.getElementById('message');
+
+            if (username === "" || password === "") {
+                messageDiv.textContent = "Input tidak lengkap. Silakan masukkan username dan password.";
+                messageDiv.className = "message incomplete";
+            } else if (username === validUsername && password === validPassword) {
+                messageDiv.textContent = "Login sukses!";
+                messageDiv.className = "message success";
+            } else {
+                messageDiv.textContent = "Login gagal. Username atau password salah.";
+                messageDiv.className = "message error";
+            }
+        }
+    </script>
+</body>
+</html>

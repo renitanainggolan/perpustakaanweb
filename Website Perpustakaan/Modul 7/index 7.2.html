@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Perhitungan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+        }
+        input, select, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Perhitungan Matematika</h1>
+        <form action="result.html" method="GET">
+            <label for="num1">Bilangan Pertama:</label>
+            <input type="number" id="num1" name="num1" required>
+            
+            <label for="num2">Bilangan Kedua:</label>
+            <input type="number" id="num2" name="num2" required>
+            
+            <label for="operation">Operasi:</label>
+            <select id="operation" name="operation" required>
+                <option value="add">Tambah (+)</option>
+                <option value="subtract">Kurang (-)</option>
+                <option value="multiply">Kali (×)</option>
+                <option value="divide">Bagi (÷)</option>
+            </select>
+            
+            <button type="submit">Hitung</button>
+        </form>
+    </div>
+
+    <div class="container">
+        <h1>Hasil Perhitungan</h1>
+        <p id="result"></p>
+        <button onclick="window.history.back()">Kembali</button>
+    </div>
+
+    <script>
+        function getQueryParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        const num1 = parseFloat(getQueryParameter('num1'));
+        const num2 = parseFloat(getQueryParameter('num2'));
+        const operation = getQueryParameter('operation');
+
+        let result;
+        switch (operation) {
+            case 'add':
+                result = num1 + num2;
+                break;
+            case 'subtract':
+                result = num1 - num2;
+                break;
+            case 'multiply':
+                result = num1 * num2;
+                break;
+            case 'divide':
+                result = num2 !== 0 ? num1 / num2 : 'Kesalahan: Pembagian dengan nol';
+                break;
+            default:
+                result = 'Operasi tidak valid';
+        }
+
+        document.getElementById('result').textContent = `Hasil: ${result}`;
+    </script>
+</body>
+</html>

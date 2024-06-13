@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar PHP</title>
+    <style>
+        body {
+            background-image: url(bg.jpg);
+            background-size: 100%;
+            font-family: 'Times New Roman', Times, serif;
+
+        }
+        h1 {
+            text-align: center;
+        }
+        .day {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Daftar Hari Belajar PHP</h1>
+    <ul class="day-list" id="dayList"></ul>
+
+    <script>
+        const dayList = document.getElementById('dayList');
+        for (let i = 1; i <= 1000; i++) {
+            const listItem = document.createElement('li');
+            if (i === 3) {
+                listItem.textContent = `ini adalah hari ke-${i} belajar PHp`;
+            } else if (i === 5) {
+                listItem.textContent = `Ini adalah Ilari ke-${i} belajar PHP`;
+            } else {
+                listItem.textContent = `Ini adalah hari ke-${i} belajar PHP`;
+            }
+            dayList.appendChild(listItem);
+        }
+    </script>
+</body>
+</html>
